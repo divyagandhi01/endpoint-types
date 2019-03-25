@@ -1,0 +1,52 @@
+{
+  "contributions": [
+    {
+      "id": "intellicode-service-endpoint",
+      "description": "IntelliCode",
+      "type": "ms.vss-endpoint.service-endpoint-type",
+      "targets": [
+        "ms.vss-endpoint.endpoint-types"
+      ],
+      "properties": {
+        "name": "intellicode-scheme",
+        "displayName": "IntelliCode",
+        "url": {
+          "isVisible": "true",
+          "value": "https://prod.intellicode.vsengsaas.visualstudio.com/"
+        },
+        "authenticationSchemes": [
+          {
+            "type": "ms.vss-endpoint.endpoint-auth-scheme-token"
+          },
+          {
+            "displayName": "i18n:OAuth2",
+            "type": "ms.vss-endpoint.endpoint-auth-scheme-oauth2",
+            "authorizationUrl": "{{{configuration.Url}}}/common/oauth2/v2.0/authorize?client_id={{{configuration.ClientId}}}&response_type=code&scope=api://efa03cf6-622b-49ff-90ee-936f15c700d6/model.train&redirect_uri=https://codedev.ms/divyag/_admin/oauth2/callback",
+            "dataSourceBindings": [
+              {
+                "target": "AccessToken",
+                "dataSourceName": "AccessToken",
+                "resultTemplate": "{\"AccessToken\" : \"{{{access_token}}}\", \"Error\" : \"{{{error}}}\", \"Error_Description\" : \"{{{error_description}}}\", \"ExpiresIn\" : \"{{{expires_in}}}\", \"Scope\" : \"{{{scope}}}\",}"
+              }
+            ]
+          }
+        ],
+        "dataSources": [
+          {
+            "name": "AccessToken",
+            "endpointUrl": "{{{configuration.Url}}}/common/oauth2/v2.0/token",
+            "requestVerb": "Post",
+            "requestContent": "grant_type=authorization_code&code={{{AuthorizationCode}}}&redirect_uri=https%3A%2F%2Fcodedev.ms%2Fdivyag%2F_admin%2Foauth2%2Fcallback&client_id={{{configuraiton.ClientId}}}&client_secret={{{configuration.ClientSecret}}}",
+            "resultSelector": "jsonpath:$",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
