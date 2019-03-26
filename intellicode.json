@@ -40,7 +40,7 @@
             "resultSelector": "jsonpath:$",
             "headers": [
               {
-                "name": "Content-Type",
+                "name": "ContentType",
                 "value": "application/x-www-form-urlencoded"
               }
             ]
