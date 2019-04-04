@@ -21,7 +21,7 @@
           {
             "displayName": "i18n:OAuth2",
             "type": "ms.vss-endpoint.endpoint-auth-scheme-oauth2",
-            "authorizationUrl": "{{{configuration.Url}}}/common/oauth2/v2.0/authorize?client_id={{{configuration.ClientId}}}&response_type=code&scope=api://efa03cf6-622b-49ff-90ee-936f15c700d6/model.train&redirect_uri=https://codedev.ms/divyag/_admin/oauth2/callback",
+            "authorizationUrl": "{{{configuration.Url}}}/common/oauth2/v2.0/authorize?client_id={{{configuration.ClientId}}}&response_type=code&scope=api://efa03cf6-622b-49ff-90ee-936f15c700d6/model.train&redirect_uri={{{RedirectUrl}}}",
             "dataSourceBindings": [
               {
                 "target": "AccessToken",
@@ -36,7 +36,7 @@
             "name": "AccessToken",
             "endpointUrl": "{{{configuration.Url}}}/common/oauth2/v2.0/token",
             "requestVerb": "Post",
-            "requestContent": "grant_type=authorization_code&code={{{AuthorizationCode}}}&redirect_uri=https%3A%2F%2Fcodedev.ms%2Fdivyag%2F_admin%2Foauth2%2Fcallback&client_id={{{configuration.ClientId}}}&client_secret={{{configuration.ClientSecret}}}",
+            "requestContent": "grant_type=authorization_code&code={{{AuthorizationCode}}}&redirect_uri={{{RedirectUrl}}}&client_id={{{configuration.ClientId}}}&client_secret={{{configuration.ClientSecret}}}",
             "resultSelector": "jsonpath:$",
             "headers": [
               {
