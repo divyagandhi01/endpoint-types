@@ -12,7 +12,7 @@
         "displayName": "IntelliCode",
         "url": {
           "isVisible": "true",
-          "value": "https://prod.intellicode.vsengsaas.visualstudio.com/"
+          "value": "https://dev.azure.com/prod.intellicode.vsengsaas/"
         },
         "authenticationSchemes": [
           {
@@ -36,11 +36,11 @@
             "name": "AccessToken",
             "endpointUrl": "{{{configuration.Url}}}/common/oauth2/v2.0/token",
             "requestVerb": "Post",
-            "requestContent": "grant_type=authorization_code&code={{{AuthorizationCode}}}&redirect_uri=https%3A%2F%2Fcodedev.ms%2Fdivyag%2F_admin%2Foauth2%2Fcallback&client_id={{{configuraiton.ClientId}}}&client_secret={{{configuration.ClientSecret}}}",
+            "requestContent": "grant_type=authorization_code&code={{{AuthorizationCode}}}&redirect_uri=https%3A%2F%2Fcodedev.ms%2Fdivyag%2F_admin%2Foauth2%2Fcallback&client_id={{{configuration.ClientId}}}&client_secret={{{configuration.ClientSecret}}}",
             "resultSelector": "jsonpath:$",
             "headers": [
               {
-                "name": "ContentType",
+                "name": "Content-Type",
                 "value": "application/x-www-form-urlencoded"
               }
             ]
