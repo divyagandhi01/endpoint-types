@@ -44,6 +44,22 @@
                 "value": "application/x-www-form-urlencoded"
               }
             ]
+          },
+          {
+            "name": "RefreshToken",
+            "endpointUrl": "{{{configuration.Url}}}/common/oauth2/v2.0/token",
+            "requestVerb": "Post",
+            "requestContent":"client_id={{{configuration.ClientId}}}&grant_type=refresh_token&refresh_token={{{RefreshToken}}}&client_secret={{{configuration.ClientSecret}}}&scope=offline_access%20api://efa03cf6-622b-49ff-90ee-936f15c700d6/model.train",
+            "resultSelector": "jsonpath:$",
+            "headers": [
+              {
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "authenticationScheme": {
+              "type": "ms.vss-endpoint.endpoint-auth-scheme-none"
+            }
           }
         ]
       }
